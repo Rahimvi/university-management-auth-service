@@ -1,19 +1,28 @@
-import cors from 'cors'
-import express, { Application, Request, Response } from 'express'
-import usersRouter from './app/modules/users/users.router'
-const app: Application = express()
+import cors from 'cors';
+import express, { Application } from 'express';
+import globalErrorHandler from './app/middlewares/globalErrorHandler';
+import { UserRoutes } from './app/modules/user/user.router';
+const app: Application = express();
 //cors
-app.use(cors())
+app.use(cors());
 
 //parser
-app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 //tasting
 //Application Routes
-app.use('/api/v1/users/', usersRouter)
+app.use('/api/v1/users/', UserRoutes);
 
-app.get('/', (req: Request, res: Response) => {
-  res.send('Hello World!')
-})
+//Testing
 
-export default app
+// app.get('/', (req: Request, res: Response, next: NextFunction) => {
+//   //   throw new ApiError(400, 'Internal error')
+//   console.log(x)
+
+//   // next('Ore baba error')
+// })
+
+//Global Error handler
+app.use(globalErrorHandler);
+
+export default app;
