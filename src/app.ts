@@ -1,7 +1,7 @@
 import cors from 'cors';
 import express, { Application } from 'express';
 import globalErrorHandler from './app/middlewares/globalErrorHandler';
-import { UserRoutes } from './app/modules/user/user.router';
+import routes from './app/router';
 const app: Application = express();
 //cors
 app.use(cors());
@@ -9,9 +9,12 @@ app.use(cors());
 //parser
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use('/api/v1/', routes);
 //tasting
 //Application Routes
-app.use('/api/v1/users/', UserRoutes);
+// app.use('/api/v1/users/', UserRoutes);
+// app.use('/api/v1/academic-semesters', academicSemesterRoutes);
 
 //Testing
 
