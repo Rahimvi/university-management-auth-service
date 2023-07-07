@@ -1,3 +1,4 @@
+import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import express, { Application, NextFunction, Request, Response } from 'express';
 import httpStatus from 'http-status';
@@ -7,24 +8,15 @@ const app: Application = express();
 //cors
 app.use(cors());
 
+//cookie parser
+
+app.use(cookieParser());
+
 //parser
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/api/v1/', routes);
-//tasting
-//Application Routes
-// app.use('/api/v1/users/', UserRoutes);
-// app.use('/api/v1/academic-semesters', academicSemesterRoutes);
-
-//Testing
-
-// app.get('/', (req: Request, res: Response, next: NextFunction) => {
-//   //   throw new ApiError(400, 'Internal error')
-//   console.log(x)
-
-//   // next('Ore baba error')
-// })
 
 //Global Error handler
 app.use(globalErrorHandler);

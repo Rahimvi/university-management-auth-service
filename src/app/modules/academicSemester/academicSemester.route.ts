@@ -24,4 +24,4 @@ router.delete('/:id', academicSemesterController.deleteSemester);
 
 router.get('/', academicSemesterController.getAllSemesters);
 
-export const academicSemesterRoutes = router;
+export const AcademicSemesterRoutes = router;

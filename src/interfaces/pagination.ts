@@ -1,5 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
-export type IPaginationOption = {
+export type IPaginationOptions = {
   page?: number;
   limit?: number;
   sortBy?: string;
